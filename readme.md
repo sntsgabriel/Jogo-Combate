@@ -1,18 +1,29 @@
 # Jogo de Batalha em C++
 
-Este projeto implementa um jogo de batalha em turnos utilizando a linguagem **C++**, com foco em modularização e boas práticas de organização de código.  
-O jogo foi desenvolvido como exercício de aprendizado em programação estruturada e separação de funções em arquivos distintos.
+Projeto desenvolvido em **C++** que implementa um jogo de batalha em turnos executado no console. O foco principal é a **organização do código**, **modularização**, e o uso de **ferramentas profissionais de build**, como o **CMake**, seguindo práticas comuns em ambientes corporativos.
 
 ---
 
-## 📁 Estrutura do projeto
+## 🚀 Tecnologias Utilizadas
 
-```
+- **C++17**
+- **CMake**
+- **Visual Studio 2026 (MSVC)**
+- **Ninja (via CMake)**
+- **VS Code / Visual Studio**
+
+---
+
+## 📁 Estrutura do Projeto
+
+```text
 jogo-combate/
-├── src/        → arquivos .cpp
-├── include/    → arquivos .h
-├── build/      → saída da compilação
-├── Makefile    → para compilar facilmente
+│
+├── CMakeLists.txt
+├── src/        → arquivos fonte (.cpp)
+├── include/    → arquivos de cabeçalho (.h)
+├── build/      → arquivos gerados pelo CMake (não versionado)
+├── Makefile    → método de build alternativo (legado)
 └── README.md
 ```
 
@@ -20,47 +31,83 @@ jogo-combate/
 
 ## 🧰 Funcionalidades
 
-- Sistema de combate entre dois personagens.
-- Escolha de armas com valores de dano distintos.
+- Combate em turnos entre dois personagens.
+- Seleção de armas com valores de dano distintos.
 - Atualização dinâmica da vida dos jogadores.
-- Exibição de vencedor quando um personagem chega a 0 de vida.
-- Possibilidade de continuar ou encerrar o jogo a cada turno.
+- Barra de vida exibida no console.
+- Verificação de vitória, derrota ou empate.
+- Opção de continuar ou encerrar o jogo a cada turno.
 
 ---
 
-## Requisitos
+## ⚙️ Build do Projeto (CMake)
 
-Antes de compilar, é necessário ter instalado:
+Este projeto utiliza **CMake** como sistema de build, permitindo uma compilação organizada, portátil e compatível com IDEs profissionais.
 
-- Um compilador C++ (ex: `g++`)
+### 🔹 Pré-requisitos
 
----
-
-## Compilação
-
-### **Windows (MinGW ou MSYS2)**
-No terminal, estando na pasta do projeto:
-
-Compile com:
-```bash
-g++ src/main.cpp src/functions.cpp -I include -o jogo-combate
-```
-
-E execute:
-```bash
-./jogo-combate
-```
+- CMake ≥ 3.16
+- Compilador C++ (MSVC, GCC ou Clang)
+- Visual Studio 2026 (Windows)
 
 ---
 
-### **Linux**
-Certifique-se de ter o compilador instalado:
+### 🔹 Gerar o build
+
+Na raiz do projeto:
 
 ```bash
-sudo apt install build-essential
+mkdir build
+cd build
+cmake ..
 ```
 
-Compile com:
+---
+
+### 🔹 Compilar
+
+```bash
+cmake --build .
+```
+
+---
+
+### 🔹 Executar (Windows)
+
+```bash
+.\Debug\JogoCombate.exe
+```
+
+Ou execute diretamente pelo **Visual Studio** (`F5` ou `Ctrl + F5`).
+
+---
+
+## 🖥️ Abrindo no Visual Studio
+
+1. Abrir o **Visual Studio 2026**
+2. Selecionar **File → Open → Folder**
+3. Escolher a pasta raiz do projeto (onde está o `CMakeLists.txt`)
+4. O Visual Studio detecta e configura o CMake automaticamente
+
+---
+
+## 🛠️ Build Alternativo (Make — Linux e macOS)
+
+Além do CMake, o projeto disponibiliza um **Makefile simples**
+para compilação rápida em ambientes **Linux** e **macOS**.
+
+> Este método é indicado apenas para uso local e aprendizado.
+> O **CMake é o método principal e recomendado**.
+
+### 🔹 Requisitos
+
+- Compilador C++ (`g++` ou `clang++`)
+- `make`
+
+### 🔹 Compilar
+
+Na raiz do projeto:
+
 ```bash
 make
 ```
@@ -69,3 +116,18 @@ E execute:
 ```bash
 ./build/jogo-combate
 ```
+
+
+
+## 📌 Status do Projeto
+
+✔ Estrutura modular
+✔ Separação entre `.h` e `.cpp`
+✔ Compatível com Visual Studio e VS Code
+
+---
+
+## 👤 Autor
+
+Gabriel Santos
+
