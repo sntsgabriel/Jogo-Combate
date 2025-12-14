@@ -2,7 +2,6 @@
 #include <string>
 
 #include "functions.h"
-// using namespace std;
 
 int main()
 {
@@ -29,39 +28,39 @@ int main()
         std::cout << "=== TURNO " << turno << "\n";
 
         std::cout << "Vez de " << personagem1 << " jogar\n";
-        mostrarArmas();
+        MostrarArmas();
         std::cout << "Digite a arma de combate: ";
         std::cin >> arms;
 
-        dano = calculardano(arms);
+        dano = CalcularDano(arms);
 
-        vida2 = calcularvida(vida2, dano);
+        vida2 = CalcularVida(vida2, dano);
 
         std::cout << "Foi desferido " << dano << " de dano!\n";
 
         std::cout << "Vida atual de " << personagem2 << ": " << vida2 << "\n";
-        mostrarVida(personagem2, vida2);
+        MostrarVida(personagem2, vida2);
 
-        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
+        if (VerificarFim(vida1, vida2, personagem1, personagem2)) break;
 
 
 
         std::cout << "Vez de " << personagem2 << " jogar\n";
-        mostrarArmas();
+        MostrarArmas();
         std::cout << "Digite a arma de combate: ";
         std::cin >> arms;
 
-        int danoinimigo = calculardano(arms);
+        int danoinimigo = CalcularDano(arms);
 
-        vida1 = calcularvida(vida1, danoinimigo);
+        vida1 = CalcularVida(vida1, danoinimigo);
         std::cout << "Foi desferido " << danoinimigo << " de dano\n";
 
         std::cout << "Vida atual de " << personagem1 << ": " << vida1 << "\n";
-        mostrarVida(personagem1, vida1);
+        MostrarVida(personagem1, vida1);
 
-        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
+        if (VerificarFim(vida1, vida2, personagem1, personagem2)) break;
 
-        if (!querContinuar()) {
+        if (!ContinuarJogo()) {
             std::cout << "\nJogo encerrado...\n";
             break;
         }
