@@ -7,7 +7,7 @@ int main()
 {
     std::string continuar;
     std::string personagem1, personagem2;
-    std::string arms;
+    std::string arma;
     int vida2 = 200;
     int vida1 = 200;
     int dano;
@@ -30,9 +30,9 @@ int main()
         std::cout << "Vez de " << personagem1 << " jogar\n";
         MostrarArmas();
         std::cout << "Digite a arma de combate: ";
-        std::cin >> arms;
+        std::cin >> arma;
 
-        dano = CalcularDano(arms);
+        dano = CalcularDano(arma);
 
         vida2 = CalcularVida(vida2, dano);
 
@@ -48,9 +48,9 @@ int main()
         std::cout << "Vez de " << personagem2 << " jogar\n";
         MostrarArmas();
         std::cout << "Digite a arma de combate: ";
-        std::cin >> arms;
+        std::cin >> arma;
 
-        int danoinimigo = CalcularDano(arms);
+        int danoinimigo = CalcularDano(arma);
 
         vida1 = CalcularVida(vida1, danoinimigo);
         std::cout << "Foi desferido " << danoinimigo << " de dano\n";

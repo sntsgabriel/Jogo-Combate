@@ -23,7 +23,6 @@ jogo-combate/
 ├── src/        → arquivos fonte (.cpp)
 ├── include/    → arquivos de cabeçalho (.h)
 ├── build/      → arquivos gerados pelo CMake (não versionado)
-├── Makefile    → método de build alternativo (legado)
 └── README.md
 ```
 
@@ -90,33 +89,6 @@ Ou execute diretamente pelo **Visual Studio** (`F5` ou `Ctrl + F5`).
 4. O Visual Studio detecta e configura o CMake automaticamente
 
 ---
-
-## 🛠️ Build Alternativo (Make — Linux e macOS)
-
-Além do CMake, o projeto disponibiliza um **Makefile simples**
-para compilação rápida em ambientes **Linux** e **macOS**.
-
-> Este método é indicado apenas para uso local e aprendizado.
-> O **CMake é o método principal e recomendado**.
-
-### 🔹 Requisitos
-
-- Compilador C++ (`g++` ou `clang++`)
-- `make`
-
-### 🔹 Compilar
-
-Na raiz do projeto:
-
-```bash
-make
-```
-
-E execute:
-```bash
-./build/jogo-combate
-```
-
 
 
 ## 📌 Status do Projeto

@@ -12,17 +12,17 @@ int CalcularVida(int vidajogador,int dano) {
     return (novaVida < 0) ? 0 : novaVida; // Retorna 0 se ficar negativo
 }
 
-int CalcularDano(string arms) {
+int CalcularDano(string arma) {
     int dano = 0;
-    if(arms == "espada" || arms == "1") {
+    if(arma == "espada" || arma == "1") {
         dano = 30;
-    } else if(arms == "machado" || arms == "2") {
+    } else if(arma == "machado" || arma == "2") {
         dano = 10;
-    } else if(arms == "bomba" || arms == "3") {
+    } else if(arma == "bomba" || arma == "3") {
         dano = 80;
-    } else if(arms == "adaga" || arms == "4") {
+    } else if(arma == "adaga" || arma == "4") {
         dano = 5;
-    } else if(arms == "magia" || arms == "5") {
+    } else if(arma == "magia" || arma == "5") {
         dano = 50;
     } else {
         cout << "Equipamento Errado! Dano 0\n";
