@@ -5,7 +5,6 @@
 
 int main()
 {
-    std::string continuar;
     std::string personagem1, personagem2;
     std::string arma;
     int vida2 = 200;
@@ -28,39 +27,39 @@ int main()
         std::cout << "=== TURNO " << turno << "\n";
 
         std::cout << "Vez de " << personagem1 << " jogar\n";
-        MostrarArmas();
+        mostrarArmas();
         std::cout << "Digite a arma de combate: ";
         std::cin >> arma;
 
-        dano = CalcularDano(arma);
+        dano = calcularDano(arma);
 
-        vida2 = CalcularVida(vida2, dano);
+        vida2 = calcularVida(vida2, dano);
 
         std::cout << "Foi desferido " << dano << " de dano!\n";
 
         std::cout << "Vida atual de " << personagem2 << ": " << vida2 << "\n";
-        MostrarVida(personagem2, vida2);
+        mostrarVida(personagem2, vida2);
 
-        if (VerificarFim(vida1, vida2, personagem1, personagem2)) break;
+        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
 
 
 
         std::cout << "Vez de " << personagem2 << " jogar\n";
-        MostrarArmas();
+        mostrarArmas();
         std::cout << "Digite a arma de combate: ";
         std::cin >> arma;
 
-        int danoinimigo = CalcularDano(arma);
+        int danoInimigo = calcularDano(arma);
 
-        vida1 = CalcularVida(vida1, danoinimigo);
-        std::cout << "Foi desferido " << danoinimigo << " de dano\n";
+        vida1 = calcularVida(vida1, danoInimigo);
+        std::cout << "Foi desferido " << danoInimigo << " de dano\n";
 
         std::cout << "Vida atual de " << personagem1 << ": " << vida1 << "\n";
-        MostrarVida(personagem1, vida1);
+        mostrarVida(personagem1, vida1);
 
-        if (VerificarFim(vida1, vida2, personagem1, personagem2)) break;
+        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
 
-        if (!ContinuarJogo()) {
+        if (!continuarJogo()) {
             std::cout << "\nJogo encerrado...\n";
             break;
         }

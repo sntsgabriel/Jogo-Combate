@@ -1,14 +1,13 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 #include <string>
-using namespace std;
 
-void MostrarArmas();
-int CalcularVida(int vidajogador,int dano);
-int CalcularDano(string arms);
-bool VerificarFim(int vida1, int vida2, string nome1, string nome2);
-void MostrarVida(string nome, int vida);
-bool ContinuarJogo();
+void mostrarArmas();
+int calcularVida(int vidaJogador,int dano);
+int calcularDano(std::string arma);
+bool verificarFim(int vida1, int vida2, std::string nome1, std::string nome2);
+void mostrarVida(std::string nome, int vida);
+bool continuarJogo();
 
 
 #endif

@@ -1,18 +1,16 @@
 #include <iostream>
 #include "functions.h"
 
-using namespace std;
-
-void MostrarArmas() {
-    cout << "Armas: espada (30), machado (10), bomba (80), adaga(5), magia(50)\n";
+void mostrarArmas() {
+    std::cout << "Armas: espada (30), machado (10), bomba (80), adaga(5), magia(50)\n";
 }
 
-int CalcularVida(int vidajogador,int dano) {
+int calcularVida(int vidajogador, int dano) {
     int novaVida = vidajogador - dano;
     return (novaVida < 0) ? 0 : novaVida; // Retorna 0 se ficar negativo
 }
 
-int CalcularDano(string arma) {
+int calcularDano(std::string arma) {
     int dano = 0;
     if(arma == "espada" || arma == "1") {
         dano = 30;
@@ -25,39 +23,39 @@ int CalcularDano(string arma) {
     } else if(arma == "magia" || arma == "5") {
         dano = 50;
     } else {
-        cout << "Equipamento Errado! Dano 0\n";
+        std::cout << "Equipamento Errado! Dano 0\n";
     }
     return dano;
 }
 
-bool VerificarFim(int vida1, int vida2, string nome1, string nome2) {
+bool verificarFim(int vida1, int vida2, std::string nome1, std::string nome2) {
     if (vida1 <= 0 && vida2 <= 0) {
-        cout << "Empate!\n";
+        std::cout << "Empate!\n";
         return true;
     }
     else if (vida2 <= 0) {
-        cout << nome1 << " venceu!\n";
+        std::cout << nome1 << " venceu!\n";
         return true;
     }
     else if (vida1 <= 0) {
-        cout << nome2 << " venceu!\n";
+        std::cout << nome2 << " venceu!\n";
         return true;
     }
     return false;
 }
 
-void MostrarVida(string nome, int vida) {
-    cout << nome << " [";
+void mostrarVida(std::string nome, int vida) {
+    std::cout << nome << " [";
     int barras = vida / 10; // cada 10 de vida = 1 barra
-    for (int i = 0; i < barras; i++) cout << "|";
-    for (int i = barras; i < 20; i++) cout << " ";
-    cout << "] " << vida << "\n";
+    for (int i = 0; i < barras; i++) std::cout << "|";
+    for (int i = barras; i < 20; i++) std::cout << " ";
+    std::cout << "] " << vida << "\n";
 }
 
-bool ContinuarJogo() {
-    string resposta;
-    cout << "\nQuer continuar jogando? (sim/nao): ";
-    cin >> resposta;
+bool continuarJogo() {
+    std::string resposta;
+    std::cout << "\nQuer continuar jogando? (sim/nao): ";
+    std::cin >> resposta;
     return (resposta == "sim" || resposta == "Sim" || resposta == "SIM");
 }
 
