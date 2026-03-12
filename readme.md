@@ -65,20 +65,47 @@ cmake ..
 
 ### 🔹 Compilar
 
+> ⚠️ Antes de rodar o build, verifique se você está dentro de um diretório de build válido. Erros como “not build directory” acontecem quando a pasta não existe ou não foi inicializada pelo CMake.
+
 ```bash
+# crie e entre na pasta (só é necessário uma vez)
+mkdir -p build
+cd build
+
+# configure o projeto
+ecmake ..    # ou cmake ..
+
+# agora compile
 cmake --build .
 ```
 
+> O CMake gera binários em subpastas como `Debug/` ou `Release/` dependendo da configuração. Se você não vir o executável no explorador do Visual Studio, confira a pasta `build/Debug` ou `build/Release` no sistema de arquivos – o IDE às vezes não lista todos os arquivos.
+
 ---
 
-### 🔹 Executar (Windows)
+### 🔹 Executar
+
+- **Windows**
+
+  ```bash
+  ./Debug/JogoCombate.exe   # ou Release/JogoCombate.exe se tiver compilado nessa configuração
+  ```
+
+  No Visual Studio basta pressionar `F5` ou `Ctrl+F5` após abrir a pasta.
+
+- **Linux / macOS**
+
+  ```bash
+  ./JogoCombate     # o binário estará na raiz de build ou na subpasta correspondente
+  ```
+
+  Se necessário, ajuste permissões com `chmod +x JogoCombate`.
+
+> Para mudar a configuração de compilação (Debug/Release) use o menu do CMake no Visual Studio, VS Code ou a variável `CMAKE_BUILD_TYPE` ao invocar `cmake`:
 
 ```bash
-.\Debug\JogoCombate.exe
+cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
-
-Ou execute diretamente pelo **Visual Studio** (`F5` ou `Ctrl + F5`).
-
 ---
 
 ## 🖥️ Abrindo no Visual Studio
