@@ -88,7 +88,7 @@ cmake --build .
 - **Windows**
 
   ```bash
-  ./Debug/JogoCombate.exe   # ou Release/JogoCombate.exe se tiver compilado nessa configuração
+  ./Debug/JogoCombate.exe
   ```
 
   No Visual Studio basta pressionar `F5` ou `Ctrl+F5` após abrir a pasta.
@@ -96,7 +96,7 @@ cmake --build .
 - **Linux / macOS**
 
   ```bash
-  ./JogoCombate     # o binário estará na raiz de build ou na subpasta correspondente
+  ./JogoCombate
   ```
 
   Se necessário, ajuste permissões com `chmod +x JogoCombate`.
