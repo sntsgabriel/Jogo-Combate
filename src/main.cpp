@@ -3,68 +3,63 @@
 
 #include "functions.h"
 
-int main()
-{
-    std::string personagem1, personagem2;
+namespace {
+std::string lerNome(const std::string& mensagem) {
+    std::string nome;
+    do {
+        std::cout << mensagem;
+        std::getline(std::cin, nome);
+        if (nome.empty()) std::cout << "O nome nao pode ficar vazio.\n";
+    } while (nome.empty());
+    return nome;
+}
+
+int escolherDano(const Personagem& atacante) {
     std::string arma;
-    int vida2 = 200;
-    int vida1 = 200;
-    int dano;
+    int dano = -1;
+
+    std::cout << "Vez de " << atacante.nome << " jogar.\n";
+    mostrarArmas();
+    while (dano < 0) {
+        std::cout << "Escolha uma arma (nome ou numero): ";
+        std::getline(std::cin, arma);
+        dano = calcularDano(arma);
+        if (dano < 0) std::cout << "Arma invalida. Escolha uma das opcoes exibidas.\n";
+    }
+    return dano;
+}
+} // namespace
+
+int main() {
+    Personagem personagem1{lerNome("Digite o nome do primeiro personagem: ")};
+    Personagem personagem2{lerNome("Digite o nome do segundo personagem: ")};
     int turno = 1;
 
-    std::cout << "Digite o nome do primeiro personagem: ";
-    std::getline(std::cin, personagem1);
-    std::cout << "Digite o nome do segundo personagem: ";
-    std::getline(std::cin, personagem2);
-
-    while (personagem1 == personagem2){
-        std::cout << "Personagem com o mesmo nome\nInsira um nome diferente\n";
-        std::getline(std::cin, personagem2);
+    while (personagem1.nome == personagem2.nome) {
+        std::cout << "Personagens precisam ter nomes diferentes.\n";
+        personagem2.nome = lerNome("Digite o nome do segundo personagem: ");
     }
 
-    while(true)
-    {
-        std::cout << "=== TURNO " << turno << "\n";
+    while (true) {
+        std::cout << "\n=== TURNO " << turno << " ===\n";
 
-        std::cout << "Vez de " << personagem1 << " jogar\n";
-        mostrarArmas();
-        std::cout << "Digite a arma de combate: ";
-        std::cin >> arma;
-
-        dano = calcularDano(arma);
-
-        vida2 = calcularVida(vida2, dano);
-
+        const int dano = escolherDano(personagem1);
+        personagem2.vida = calcularVida(personagem2.vida, dano);
         std::cout << "Foi desferido " << dano << " de dano!\n";
+        mostrarVida(personagem2);
+        if (verificarFim(personagem1, personagem2)) break;
 
-        std::cout << "Vida atual de " << personagem2 << ": " << vida2 << "\n";
-        mostrarVida(personagem2, vida2);
-
-        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
-
-
-
-        std::cout << "Vez de " << personagem2 << " jogar\n";
-        mostrarArmas();
-        std::cout << "Digite a arma de combate: ";
-        std::cin >> arma;
-
-        int danoInimigo = calcularDano(arma);
-
-        vida1 = calcularVida(vida1, danoInimigo);
-        std::cout << "Foi desferido " << danoInimigo << " de dano\n";
-
-        std::cout << "Vida atual de " << personagem1 << ": " << vida1 << "\n";
-        mostrarVida(personagem1, vida1);
-
-        if (verificarFim(vida1, vida2, personagem1, personagem2)) break;
+        const int danoInimigo = escolherDano(personagem2);
+        personagem1.vida = calcularVida(personagem1.vida, danoInimigo);
+        std::cout << "Foi desferido " << danoInimigo << " de dano!\n";
+        mostrarVida(personagem1);
+        if (verificarFim(personagem1, personagem2)) break;
 
         if (!continuarJogo()) {
             std::cout << "\nJogo encerrado...\n";
             break;
         }
-
-        turno++;
+        ++turno;
     }
 
     return 0;

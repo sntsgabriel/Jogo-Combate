@@ -73,7 +73,7 @@ mkdir -p build
 cd build
 
 # configure o projeto
-ecmake ..    # ou cmake ..
+cmake ..
 
 # agora compile
 cmake --build .
